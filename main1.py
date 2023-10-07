@@ -51,8 +51,7 @@ def get_birthdays_per_week(users):
             str_names=str_names+birthdays_per_week[key][i]+', '
         #print(key+": "+str_names[:-2])
         print("\033[36m{}".format(key)+"\033[30m{}".format(": "+str_names[:-2]))
-        str_names=''   
-    print("Hello")    
+        str_names=''     
             
 
 get_birthdays_per_week([{"name": "Bill Gates", "birthday": datetime(1955, 10, 28)},
