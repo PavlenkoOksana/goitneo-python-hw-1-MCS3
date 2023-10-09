@@ -6,7 +6,7 @@ def parse_input(user_input):
 def add_contact(args, contacts):
     name, phone = args
     contacts[name] = phone
-    return "Contact added."
+    return "\033[32m{}\033[0m".format("Contact added.")
 
 def change_username_phone(args, contacts):
     name, phone = args
@@ -14,8 +14,8 @@ def change_username_phone(args, contacts):
     if name in contacts:
         contacts[name] = phone
     else:
-        return "Invalid name"
-    return "Contact changed."
+        return "\033[31m{}\033[0m".format("Invalid name.")
+    return "\033[32m{}\033[0m".format("Contact changed.")
 
 def phone_username(args, contacts):
     name = args
@@ -23,27 +23,26 @@ def phone_username(args, contacts):
     if name[0] in contacts:
         return contacts[name[0]]
     else:
-        return "Invalid name"
+        return "\033[31m{}\033[0m".format("Invalid name.")
       
 def all_phone_print(contacts):
     str=''
     for keys, value in contacts.items():
-        str = str + keys + ": " + value + "\n"
+        str = str + "\033[1m{}\033[0m".format(keys) + ": " + value + "\n"
     return str[:-1]  
 
 def main():
     contacts = {}
-    print("Welcome to the assistant bot!")
+    print("\033[1m\033[34m{}\033[0m".format("Welcome to the assistant bot!"))
     while True:
         user_input = input("Enter a command: ")
         command, *args = parse_input(user_input)
 
         if command in ["close", "exit"]:
-            print("Good bye!")
-            print(contacts)
+            print("\033[34m{}\033[0m".format("Good bye!"))
             break
         elif command == "hello":
-            print("How can I help you?")
+            print("\033[34m{}\033[0m".format("How can I help you?"))
         elif command == "add":
             print(add_contact(args, contacts))
         elif command == "change":
@@ -53,7 +52,8 @@ def main():
         elif command == "all":
             print(all_phone_print(contacts))             
         else:
-            print("Invalid command.")
+            print("\033[31m{}\033[0m".format("Invalid command."))
 
 if __name__ == "__main__":
     main()
+
