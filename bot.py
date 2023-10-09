@@ -19,7 +19,7 @@ def change_username_phone(args, contacts):
 
 def phone_username(args, contacts):
     name = args
-    name = name.lower()
+    name[0] = name[0].lower()
     if name[0] in contacts:
         return contacts[name[0]]
     else:
@@ -29,7 +29,7 @@ def all_phone_print(contacts):
     str=''
     for keys, value in contacts.items():
         str = str + keys + ": " + value + "\n"
-    return str[:-2]  
+    return str[:-1]  
 
 def main():
     contacts = {}
