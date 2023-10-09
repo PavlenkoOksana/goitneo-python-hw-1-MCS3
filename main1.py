@@ -16,7 +16,7 @@ def get_birthdays_per_week(users):
         #print(">>>",name,birthday_this_year)  
         delta_days = (birthday_this_year - today).days
         if delta_days < 7:
-            if birthday_this_year.weekday() == 0 or birthday_this_year.weekday()==5 or birthday_this_year.weekday()== 6:
+            if birthday_this_year.weekday() == 0 or (birthday_this_year.weekday()==5 and delta_days<2) or (birthday_this_year.weekday()== 6 and delta_days<2):
                 #print(birthday_this_year.weekday())
                 if "Monday" not in birthdays_per_week:
                     birthdays_per_week["Monday"] = [name]
@@ -66,6 +66,7 @@ get_birthdays_per_week([{"name": "Bill Gates", "birthday": datetime(1955, 10, 28
     {"name": "Bill Gates3", "birthday": datetime(1944, 5, 20)},
     {"name": "Volodimir Zelensky", "birthday": datetime(1979, 10, 7)},
     {"name": "Alla Mazur", "birthday": datetime(1999, 10, 8)},
+    {"name": "Getman Skoropadskiy", "birthday": datetime(1999, 10, 13)},
     {"name": "Arni Schwarzneger", "birthday": datetime(1955, 10, 13)}
 ])
 
