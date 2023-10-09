@@ -8,6 +8,7 @@ def get_birthdays_per_week(users):
         name = user["name"]
         birthday = user["birthday"].date()
         birthday_this_year = birthday.replace(year=today.year)
+        # без этого условия, если выполнять программу в понедельник, прошедшие выходные не попадают поле зрения
         if (today.weekday() == 0 and (birthday_this_year.day-today.day) == -1) or (today.weekday() == 0 and (birthday_this_year.day-today.day) == -2):
             if "Monday" not in birthdays_per_week:
                     birthdays_per_week["Monday"] = [name]         
@@ -61,6 +62,8 @@ get_birthdays_per_week([{"name": "Bill Gates", "birthday": datetime(1955, 10, 28
     {"name": "Bill Gates3", "birthday": datetime(1944, 5, 20)},
     {"name": "Volodimir Zelensky", "birthday": datetime(1979, 10, 7)},
     {"name": "Alla Mazur", "birthday": datetime(1999, 10, 8)},
+    {"name": "Name 11111", "birthday": datetime(1999, 10, 14)},
+    {"name": "Name 22222", "birthday": datetime(1999, 10, 15)},
     {"name": "Getman Skoropadskiy", "birthday": datetime(1999, 10, 16)},
     {"name": "Arni Schwarzneger", "birthday": datetime(1955, 10, 13)}
 ])
