@@ -3,7 +3,7 @@ from datetime import datetime
 def get_birthdays_per_week(users):
     birthdays_per_week = {}
     today = datetime.today().date()
-    str_names=''
+    str_names = ""
     for user in users:
         name = user["name"]
         birthday = user["birthday"].date()
@@ -18,7 +18,8 @@ def get_birthdays_per_week(users):
              birthday_this_year=birthday.replace(year=today.year+1)  
         delta_days = (birthday_this_year - today).days
         if delta_days < 7:
-            if birthday_this_year.weekday() == 0 or (birthday_this_year.weekday() == 5 and delta_days < 2) or  (birthday_this_year.weekday() == 6 and delta_days < 2):
+            if birthday_this_year.weekday() == 0 or (birthday_this_year.weekday() == 5 and delta_days < 5) or  (birthday_this_year.weekday() == 6 and delta_days < 6):
+                # не змогла перенести умови умовного оператора на нову строку, для візуального розділення та щоб було виконано рекомендаціЇ PEP 8, видає помилку
                 if "Monday" not in birthdays_per_week:
                     birthdays_per_week["Monday"] = [name]         
                 else:
@@ -45,9 +46,9 @@ def get_birthdays_per_week(users):
                     birthdays_per_week["Friday"].append(name)   
     for key in birthdays_per_week.keys():
         for i in range(len(birthdays_per_week[key])):
-            str_names=str_names+birthdays_per_week[key][i]+', '
-        print("\033[36m{}".format(key)+"\033[30m{}".format(": "+str_names[:-2]))
-        str_names=''     
+            str_names = str_names + birthdays_per_week[key][i] + ", "
+        print("\033[36m{}".format(key)+"\033[30m{}".format(": " + str_names[:-2]))
+        str_names = ""     
           
 
 get_birthdays_per_week([{"name": "Bill Gates", "birthday": datetime(1955, 10, 28)},

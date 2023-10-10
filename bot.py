@@ -26,7 +26,7 @@ def phone_username(args, contacts):
         return "\033[31m{}\033[0m".format("Invalid name.")
       
 def all_phone_print(contacts):
-    str=''
+    str = ""
     for keys, value in contacts.items():
         str = str + "\033[1m{}\033[0m".format(keys) + ": " + value + "\n"
     return str[:-1]  
