@@ -3,10 +3,12 @@ def parse_input(user_input):
     cmd = cmd.strip().lower()
     return cmd, *args
 
+
 def add_contact(args, contacts):
     name, phone = args
     contacts[name] = phone
     return "\033[32m{}\033[0m".format("Contact added.")
+
 
 def change_username_phone(args, contacts):
     name, phone = args
@@ -17,6 +19,7 @@ def change_username_phone(args, contacts):
         return "\033[31m{}\033[0m".format("Invalid name.")
     return "\033[32m{}\033[0m".format("Contact changed.")
 
+
 def phone_username(args, contacts):
     name = args
     name[0] = name[0].lower()
@@ -24,12 +27,14 @@ def phone_username(args, contacts):
         return contacts[name[0]]
     else:
         return "\033[31m{}\033[0m".format("Invalid name.")
-      
+
+
 def all_phone_print(contacts):
     str = ""
     for keys, value in contacts.items():
         str = str + "\033[1m{}\033[0m".format(keys) + ": " + value + "\n"
     return str[:-1]  
+
 
 def main():
     contacts = {}
@@ -53,6 +58,7 @@ def main():
             print(all_phone_print(contacts))             
         else:
             print("\033[31m{}\033[0m".format("Invalid command."))
+
 
 if __name__ == "__main__":
     main()
